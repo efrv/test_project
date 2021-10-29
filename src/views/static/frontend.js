@@ -90,9 +90,7 @@ async function request(url, method = 'GET', data = null){
                 headers,
                 body,
             })
-        const result = await response.json()
-        return result
-
+        return await response.json()
 
     } catch (e) {
         console.warn('Error:', e)
