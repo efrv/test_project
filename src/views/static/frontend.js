@@ -30,7 +30,7 @@ new Vue({
         async createItem(){
             let {...item} = this.form
             let result = await request('/api/counterparts', 'POST', {counterparts:[item]})
-            if(result.error) alert(result.error.message)
+            if(result.errors) alert(JSON.stringify(result.errors))
             else this.clearForm()
             await this.updateList()
         },
@@ -39,7 +39,7 @@ new Vue({
             item.id = this.currId
             //this.items.push({...item, id:Date.now(), marked:false})
             let result = await request('/api/counterparts', 'PATCH', {counterparts:[item]})
-            if(result.error) alert(result.error.message)
+            if(result.errors) alert(JSON.stringify(result.errors))
             else this.clearForm()
             await this.updateList()
         },
@@ -49,8 +49,8 @@ new Vue({
             await this.updateList()
         },
         modItem(id){
+            const item = this.items.find(i => i.id === id)
             this.currId = id
-            const item = this.items.find(i => i.id = id)
             this.form.name = item.name
             this.form.code = item.code
         },

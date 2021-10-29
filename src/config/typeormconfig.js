@@ -6,7 +6,7 @@ exports.default = {
     password: process.env.DB_PASSWORD || "v4n97GDBLLbLf6SV",
     database: process.env.DB_NAME || "test_db",
     synchronize: false,//!process.env.DB_NO_SYNC,
-    logging: !process.env.DB_NO_LOGS,
+    logging: false,//!process.env.DB_NO_LOGS,
     autoReconnect: true,
     reconnectTries: Number.MAX_VALUE,
     reconnectInterval: 2000,
